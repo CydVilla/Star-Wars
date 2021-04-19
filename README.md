@@ -24,7 +24,8 @@ I will be utilizing the Star Wars API "SWAPI."
             "skin_color": "light",
             "eye_color": "brown",
             "birth_year": "19BBY",
-            "gender": "female", ```
+            "gender": "female", 
+	    ```
 
 
 ## Wireframes

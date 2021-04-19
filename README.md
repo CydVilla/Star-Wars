@@ -12,7 +12,8 @@ This project will determine what Star Wars character you are.
 
 I will be utilizing the Star Wars API "SWAPI."
 
-``` "count": 1,
+```
+"count": 1,
     "next": null,
     "previous": null,
     "results": [
@@ -24,8 +25,9 @@ I will be utilizing the Star Wars API "SWAPI."
             "skin_color": "light",
             "eye_color": "brown",
             "birth_year": "19BBY",
-            "gender": "female", 
-	    ```
+            "gender": "female",
+	    
+ ```
 
 
 ## Wireframes

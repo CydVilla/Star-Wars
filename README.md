@@ -43,6 +43,8 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 - Create a button that extract's data from the API randomly
 - Add a site background image related to Star Wars
 - Use Star Wars esque font
+- Use axios to make an API call
+- Utilize flexbox 
 
 #### PostMVP  
 *These are examples only. Replace with your own Post-MVP features.*

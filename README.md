@@ -2,19 +2,34 @@
 
 ## Project Name
 
-The name of your project with deployed URL.
+Which Star Wars character are you?: Definitive Edition
 
 ## Project Description
 
-Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and\or functionality.
+This project will determine what Star Wars character you are.
 
 ## API and Data Sample
 
-Specify the API you are using and include a link. Show us a snippet of JSON returned by your API so we know you can access it and get the info you need
+I will be utilizing the Star Wars API "SWAPI."
+
+ "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "name": "Leia Organa",
+            "height": "150",
+            "mass": "49",
+            "hair_color": "brown",
+            "skin_color": "light",
+            "eye_color": "brown",
+            "birth_year": "19BBY",
+            "gender": "female",
+
 
 ## Wireframes
 
-Upload images of your wireframes to an image hosting site or add them to an assets folder in your repo and link them here with a description of each specific wireframe.
+https://wireframe.cc/pro/pp/ed9e19e5f433452
 
 ### MVP/PostMVP
 
@@ -23,15 +38,17 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 #### MVP 
 *These are examples only. Replace with your own MVP features.*
 
-- Find and use external api 
-- Render data on page 
-- Allow user to choose favorites 
+
+- Find an API with ample data
+- Create a button that extract's data from the API randomly
+- Add a site background image related to Star Wars
+- Use Star Wars esque font
 
 #### PostMVP  
 *These are examples only. Replace with your own Post-MVP features.*
 
-- Add second API
-- Use local storage to save user favorites
+- Add music
+- Add gifs to the sites such as tie fighter across the screen
 
 ## Project Schedule
 
@@ -51,7 +68,7 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 ## Priority Matrix
 
-Include a full list of features that have been prioritized based on the `Time and Importance` Matrix.  Link this image in a similar manner to your wireframes
+https://lucid.app/lucidchart/invitations/accept/inv_4b34903c-06a7-450f-8ffd-4965c415f915?viewport_loc=-90%2C-7%2C1579%2C753%2C0_0
 
 ## Timeframes
 

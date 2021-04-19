@@ -83,17 +83,17 @@ Time frames are also key in the development cycle.  You have limited time to cod
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 1hrs| 3.5hrs | 3.5hrs |
+| Adding Form | H | 2hrs| 3.5hrs | 3.5hrs |
 | Applying background image | H | 1hrs| 2.5hrs | 2.5hrs |
-| Working with API | H | 2hrs| 2.5hrs | 2.5hrs |
+| Working with API | H | 3hrs| 2.5hrs | 2.5hrs |
 | Formatting the site | H | 5hrs| 2.5hrs | 2.5hrs |
 | Applying user feedback content | H | 3hrs| 2.5hrs | 2.5hrs |
 | Incoorperating flexbox | H | 3hrs| 2.5hrs | 2.5hrs |
-| Adding a fun fact of the day | H | 1hrs| 2.5hrs | 2.5hrs |
-| Adding music | L | 10hrs| 2.5hrs | 2.5hrs |
+| Adding a fun fact of the day | H | 3hrs| 2.5hrs | 2.5hrs |
+| Adding music | L | 6hrs| 2.5hrs | 2.5hrs |
 | Heavy CSS/JS styling | L | 6hrs| 2.5hrs | 2.5hrs |
 | Adding animations | L | 10hrs| 2.5hrs | 2.5hrs |
-| Total | H | 40hrs| 5hrs | 5hrs |
+| Total |  | 40hrs| 5hrs | 5hrs |
 
 ## Code Snippet
 

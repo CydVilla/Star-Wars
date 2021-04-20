@@ -2,11 +2,11 @@
 
 ## Project Name
 
-Which Star Wars character are you?: Definitive Edition
+Star Wars VS 
 
 ## Project Description
 
-This project will determine what Star Wars character you are.
+This project will pit two Star Wars characters against each other in an epic battle. 
 
 ## API and Data Sample
 
@@ -36,11 +36,9 @@ https://wireframe.cc/pro/pp/ed9e19e5f433452
 
 ### MVP/PostMVP
 
-The functionality will then be divided into two separate lists: MPV and PostMVP.  Carefully decided what is placed into your MVP as the client will expect this functionality to be implemented upon project completion.  
+The functionality will then be divided into two separate lists: MPV and PostMVP.  
 
 #### MVP 
-*These are examples only. Replace with your own MVP features.*
-
 
 - Find an API with ample data
 - Create a button that extract's data from the API randomly
@@ -50,21 +48,16 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 - Utilize flexbox 
 
 #### PostMVP  
-*These are examples only. Replace with your own Post-MVP features.*
-
 - Add music
-- Add gifs to the sites such as tie fighter across the screen
-
+- Add gifs and other animations to the site
+- Add random background images
+- 
 ## Project Schedule
-
-This schedule will be used to keep track of your progress throughout the week and align with our expectations.  
-
-You are **responsible** for scheduling time with your squad to seek approval for each deliverable by the end of the corresponding day, excluding `Saturday` and `Sunday`.
 
 |  Day | Deliverable | Status
 |---|---| ---|
 |April 16-18| Prompt / Wireframes / Priority Matrix / Timeframes | Incomplete
-|April 19| Project Approval | Incomplete
+|April 19| Project Approval | Complete
 |April 20| Core Application Structure (HTML, CSS, etc.) | Incomplete
 |April 20| Pseudocode / actual code | Incomplete
 |April 21| Initial Clickable Model  | Incomplete
@@ -78,19 +71,19 @@ https://lucid.app/lucidchart/invitations/accept/inv_4b34903c-06a7-450f-8ffd-4965
 ## Timeframes
 
 
-| Component | Priority | Estimated Time | Time Invested | Actual Time |
+| Component | Priority | Estimated Time | Actual Time | 
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 2hrs| 3.5hrs | 3.5hrs |
-| Applying background image | H | 1hrs| 2.5hrs | 2.5hrs |
-| Working with API | H | 3hrs| 2.5hrs | 2.5hrs |
-| Formatting the site | H | 3hrs| 2.5hrs | 2.5hrs |
-| Applying user feedback content | H | 3hrs| 2.5hrs | 2.5hrs |
-| Incoorperating flexbox | H | 3hrs| 2.5hrs | 2.5hrs |
-| Adding a fun fact of the day | H | 3hrs| 2.5hrs | 2.5hrs |
-| Adding music | L | 6hrs| 2.5hrs | 2.5hrs |
-| Heavy CSS/JS styling | L | 6hrs| 2.5hrs | 2.5hrs |
-| Adding animations | L | 10hrs| 2.5hrs | 2.5hrs |
-| Total |  | 40hrs| 5hrs | 5hrs |
+| Adding Form | H | 2hrs| 3.5hrs |
+| Applying background image | H | 1hrs| 2.5hrs |
+| Working with API | H | 3hrs| 2.5hrs | 
+| Formatting the site | H | 3hrs| 2.5hrs | 
+| Applying user feedback content | H | 3hrs| 2.5hrs | 
+| Incoorperating flexbox | H | 3hrs| 2.5hrs | 
+| Adding a fun fact of the day | H | 3hrs| 2.5hrs | 
+| Adding music | L | 6hrs| 2.5hrs | 
+| Heavy CSS/JS styling | L | 6hrs| 2.5hrs |
+| Adding animations | L | 10hrs| 2.5hrs | 
+| Total |  | 40hrs| 5hrs | 
 
 ## Code Snippet
 

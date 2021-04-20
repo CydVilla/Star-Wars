@@ -73,17 +73,17 @@ https://lucid.app/lucidchart/invitations/accept/inv_4b34903c-06a7-450f-8ffd-4965
 
 | Component | Priority | Estimated Time | Actual Time | 
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 2hrs| 3.5hrs | 2.5 |
-| Applying background image | H | 1hrs| 2.5hrs |
-| Working with API | H | 3hrs| 2.5hrs | 2.5 |
-| Formatting the site | H | 3hrs| 2.5hrs | |
-| Applying user feedback content | H | 3hrs| 2.5hrs | 
-| Incoorperating flexbox | H | 3hrs| 2.5hrs | 
-| Adding a fun fact of the day | H | 3hrs| 2.5hrs | 
-| Adding music | L | 6hrs| 2.5hrs | 
-| Heavy CSS/JS styling | L | 6hrs| 2.5hrs |
-| Adding animations | L | 10hrs| 2.5hrs | 
-| Total |  | 40hrs| 5hrs | 
+| Adding Form | H | 2hrs| 3.5hrs | 2.5 |  |  
+| Applying background image | H | 1hrs| 2.5hrs  |
+| Working with API | H | 3hrs| 2.5hrs | 2.5  |
+| Formatting the site | H | 3hrs| 2.5hrs |  |
+| Applying user feedback content | H | 3hrs| 2.5hrs  |
+| Incoorperating flexbox | H | 3hrs| 2.5hrs  |
+| Adding a fun fact of the day | H | 3hrs| 2.5hrs  |
+| Adding music | L | 6hrs| 2.5hrs  |
+| Heavy CSS/JS styling | L | 6hrs| 2.5hrs  |
+| Adding animations | L | 10hrs| 2.5hrs  |
+| Total |  | 40hrs| 5hrs  |
 
 ## Code Snippet
 

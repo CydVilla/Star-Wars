@@ -51,7 +51,7 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 - Add music
 - Add gifs and other animations to the site
 - Add random background images
-- 
+
 ## Project Schedule
 
 |  Day | Deliverable | Status

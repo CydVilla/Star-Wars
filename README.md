@@ -54,15 +54,20 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 - 
 ## Project Schedule
 
-|  Day | Deliverable | Status
-|---|---| ---|
-|April 16-18| Prompt / Wireframes / Priority Matrix / Timeframes | Incomplete
-|April 19| Project Approval | Complete
-|April 20| Core Application Structure (HTML, CSS, etc.) | Incomplete
-|April 20| Pseudocode / actual code | Incomplete
-|April 21| Initial Clickable Model  | Incomplete
-|April 22| MVP | Incomplete
-|April 23| Presentations | Incomplete
+| Component | Priority | Estimated Time | Time Invested | Actual Time |
+| --- | :---: |  :---: | :---: | :---: |
+| Adding Form | H | 2hrs| 3.5hrs | 3.5hrs |
+| Applying background image | H | 1hrs| 2.5hrs | 2.5hrs |
+| Working with API | H | 3hrs| 2.5hrs | 2.5hrs |
+| Formatting the site | H | 3hrs| 2.5hrs | 2.5hrs |
+| Applying user feedback content | H | 3hrs| 2.5hrs | 2.5hrs |
+| Incoorperating flexbox | H | 3hrs| 2.5hrs | 2.5hrs |
+| Adding a fun fact of the day | H | 3hrs| 2.5hrs | 2.5hrs |
+| Adding music | L | 6hrs| 2.5hrs | 2.5hrs |
+| Heavy CSS/JS styling | L | 6hrs| 2.5hrs | 2.5hrs |
+| Adding animations | L | 10hrs| 2.5hrs | 2.5hrs |
+| Total |  | 40hrs| 5hrs | 5hrs |
+
 
 ## Priority Matrix
 

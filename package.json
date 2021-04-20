@@ -1,0 +1,22 @@
+{
+  "name": "star-wars",
+  "version": "1.0.0",
+  "description": "## Project Name",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CVillavicencio97/Star-Wars.git"
+  },
+  "author": "Cyd Villavicencio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CVillavicencio97/Star-Wars/issues"
+  },
+  "homepage": "https://github.com/CVillavicencio97/Star-Wars#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}

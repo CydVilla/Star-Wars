@@ -1,5 +1,56 @@
 #characterContainer {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+  margin-top: 25%;
+}
 
+#duelBtnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#header {
+  height: 100vh;
+  width: 100vw;
+}
+
+iframe {
+  width: 100%; 
+  height: 100%; 
+  margin: 0; 
+  padding: 0
+}
+
+.wookie {
+  font-family: Nanum Gothic Coding;
+  color: rgb(233, 233, 27);
+  padding: 10%;
+  font-weight: 100;
+  font-size: 69px;
+}
+
+.hitPoints {
+  font-family: Nanum Gothic Coding;
+  color: rgb(233, 233, 27);
+  padding: 10%;
+  font-weight: 100;
+  font-size: 40px;
+}
+
+#versus {
+  font-family: Nanum Gothic Coding;
+  color: rgb(233, 233, 27);
+  padding: 10%;
+  font-weight: 100;
+  font-size: 40px;
+}
+
+#winningMessage {
+  font-family: Nanum Gothic Coding;
+  color: rgb(233, 233, 27);
+  padding: 10%;
+  font-weight: 100;
+  font-size: 30px;
+  text-align: center;
 }

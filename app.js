@@ -5,18 +5,30 @@ const duel = document.querySelector("#duel");
 const character1 = document.querySelector("#character1");
 const character2 = document.querySelector("#character2");
 const battleArena = ["Death-Star.jpeg", "mustafar.png", "tatooine.jpeg"];
+const winningMessage = document.querySelector("#winningMessage")
 const battle = (character1, character2) => {
+  if (winningMessage.firstChild) {
+    winningMessage.removeChild(winningMessage.firstChild)
+  }
   console.log("battle", character1.hp);
   while (character1.hp > 0 && character2.hp > 0) {
     character1.hp -= character2.attack();
+    character1.node.innerHTML = character1.hp
     character2.hp -= character1.attack();
+    character2.node.innerHTML = character2.hp
   }
   console.log(typeof character1.hp, typeof character2.hp);
   if (character1.hp === 0) {
-    console.log(character2.name + "is the victor!");
+    console.log(character2.name + " is the victor!");
+    let victory = document.createElement('p')
+    victory.innerHTML = `${character2.name + ' defeated ' + character1.name + '!'}`
+    winningMessage.appendChild(victory)
   } else {
-    console.log(character1.name + "is the victor!");
-  }
+    console.log(character1.name + " is the victor!");
+    let victory = document.createElement('p')
+    victory.innerHTML = `${character1.name + ' defeated ' + character2.name + '!'}`
+    winningMessage.appendChild(victory)
+  } 
 };
 const winner = (character1, character2) => {
   battle(character1, character2);
@@ -29,9 +41,10 @@ console.log(randomCharNumber());
 const gif = async (name) => {
   try {
     // console.log(name)
-    // const response = await axios.get(`${GIPHY + 'chewbacca'}`)
+    const response = await axios.get(`${GIPHY + name}`)
     // console.log(`${GIPHY + 'chewbacca'}`)
-    return name;
+    console.log(response)
+    return { name, data: response.data.data };
   } catch (error) {
     console.error(error);
   }
@@ -44,8 +57,8 @@ const getCharacter = async () => {
         // console.log(data)
         return gif(data.data.name);
       })
-      .then((name) => {
-        return attributes(name);
+      .then(({ name, data  }) => {
+        return attributes(name, data);
       });
     return response;
   } catch (error) {
@@ -60,8 +73,8 @@ const getCharacter2 = async () => {
         // console.log(data)
         return gif(data.data.name);
       })
-      .then((name) => {
-        return attributes(name);
+      .then(({ name, data }) => {
+        return attributes(name, data);
       });
     return response;
     // console.log(response);
@@ -69,7 +82,7 @@ const getCharacter2 = async () => {
     console.error(error);
   }
 };
-const attributes = (name) => {
+const attributes = (name, data) => {
   return {
     name,
     hp: 100,
@@ -79,6 +92,7 @@ const attributes = (name) => {
         return randomAttack;
       }
     },
+    images: data
   };
 };
 duel.addEventListener("click", () => {
@@ -97,21 +111,36 @@ duel.addEventListener("click", () => {
   Promise.all([getCharacter(), getCharacter2()])
     .then((values) => {
       values.forEach((character, index) => {
-        console.log(character.hp);
+        console.log(character);
+        let randomIndex = Math.floor(Math.random() * character.images.length)
+        let characterImage = character.images[0].embed_url
+        console.log(characterImage)
         if (index == "0") {
           let name = document.createElement("div");
+          let gif = document.createElement('iframe')
+          gif.src = characterImage
+          character1.appendChild(gif)
+          name.classList.add('wookie')
           let hitPoints = document.createElement("span");
+          hitPoints.classList.add('hitPoints')
           hitPoints.innerHTML = character.hp;
           character1.appendChild(hitPoints);
           name.innerHTML = character.name;
           character1.appendChild(name);
+          character.node = hitPoints
         } else {
           let name = document.createElement("div");
+          let gif = document.createElement('iframe')
+          gif.src = characterImage
+          character2.appendChild(gif)
+          name.classList.add('wookie')
           let hitPoints = document.createElement("span");
+          hitPoints.classList.add('hitPoints')
           hitPoints.innerHTML = character.hp;
           character2.appendChild(hitPoints);
           name.innerHTML = character.name;
           character2.appendChild(name);
+          character.node = hitPoints
         }
       });
       return values;

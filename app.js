@@ -102,10 +102,10 @@ duel.addEventListener("click", () => {
   while (character2.firstChild) {
     character2.removeChild(character2.firstChild);
   }
-  let body = document.querySelector("body");
+  let header = document.querySelector("#header");
   let battleArenaImage =
     battleArena[Math.ceil(Math.random() * battleArena.length - 1)];
-  body.style.backgroundImage = `url(images/${battleArenaImage})`;
+  header.style.backgroundImage = `url(images/${battleArenaImage})`;
   // let char1 = getCharacter()
   // char1.then(data => console.log(data))
   Promise.all([getCharacter(), getCharacter2()])
@@ -113,7 +113,7 @@ duel.addEventListener("click", () => {
       values.forEach((character, index) => {
         console.log(character);
         let randomIndex = Math.floor(Math.random() * character.images.length)
-        let characterImage = character.images[0].embed_url
+        let characterImage = character.images[0].embed_url?character.images[0].embed_url:'images/Default.png'
         console.log(characterImage)
         if (index == "0") {
           let name = document.createElement("div");

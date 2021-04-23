@@ -25,7 +25,7 @@ span {
 
 #header {
   background-image: url(https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-14.jpg);
-  height: 710px;
+  height: 800px;
 }
 
 h1 {
@@ -100,4 +100,13 @@ iframe {
       }
 
     }
+
+  #audio {
+  color: rgb(0, 15, 181);
+  font-weight: 50;
+  filter: drop-shadow(0 0 0.75rem crimson);
+  }
   
+  #midi {
+    text-align: center;
+  }

@@ -72,17 +72,15 @@ https://lucid.app/lucidchart/invitations/accept/inv_4b34903c-06a7-450f-8ffd-4965
 
 | Component | Priority | Estimated Time | Time Invested ||
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 2hrs| 3.5hrs |  |
-| Applying background image | H | 1hrs| 2.5hrs |  |
-| Working with API | H | 3hrs| 2.5hrs |  |
-| Formatting the site | H | 3hrs| 2.5hrs |  |
-| Applying user feedback content | H | 2hrs| 2.5hrs |  |
-| Incoorperating flexbox | H | 3hrs| 2.5hrs ||
-| Adding a fun fact of the day | H | 3hrs| 2.5hrs |  |
-| Adding music | L | 6hrs| 2.5hrs |  |
-| Heavy CSS/JS styling | L | 6hrs| 2.5hrs |  |
-| Adding animations | L | 10hrs| 2.5hrs |  |
-| Total |  | 40hrs| 5hrs |  
+| Adding body content | H | 5hrs| 3hrs |  |
+| Applying background images | H | 3hrs| 2hrs |  |
+| Working with API | H | 5hrs| 5hrs |  |
+| Formatting the site | H | 6hrs| 4hrs |  |
+| Applying user feedback content | H | 2hrs| 1hrs |  |
+| Incoorperating flexbox | H | 3hrs| 2hrs ||
+| Heavy CSS/JS styling | L | 6hrs| 8hrs |  |
+| Adding Gif content | L | 10hrs| 11hrs |  |
+| Total |  | 40hrs| 36hrs |  
 
 
 ## Code Snippet
@@ -91,9 +89,50 @@ Use this section to include a brief code snippet of functionality that you are p
 
 ```
 function reverse(string) {
-	// here is the code to reverse a string of text
+	// 
 }
-```
+``` Promise.all([getCharacter(), getCharacter2()])
+    .then((values) => {
+      values.forEach((character, index) => {
+        let characterImage = character.images[0].embed_url?character.images[0].embed_url:'images/Default.png'
+        if (index == "0") {
+          let name = document.createElement("div");
+          let gif = document.createElement('iframe')
+          gif.src = characterImage
+          character1.appendChild(gif)
+          name.classList.add('wookie')
+          let hitPoints = document.createElement("span");
+          hitPoints.classList.add('hitPoints')
+          hitPoints.innerHTML = character.hp;
+          character1.appendChild(hitPoints);
+          name.innerHTML = character.name;
+          character1.appendChild(name);
+          character.node = hitPoints
+        } else {
+          let name = document.createElement("div");
+          let gif = document.createElement('iframe')
+          gif.src = characterImage
+          character2.appendChild(gif)
+          name.classList.add('wookie')
+          let hitPoints = document.createElement("span");
+          hitPoints.classList.add('hitPoints')
+          hitPoints.innerHTML = character.hp;
+          character2.appendChild(hitPoints);
+          name.innerHTML = character.name;
+          character2.appendChild(name);
+          character.node = hitPoints
+        }
+      });
+      return values;
+    })
+    .then((characters) => {
+      winner(characters[0], characters[1]);
+    });
+
+    This code is essentially saying to use my "Default.PNG" in a situtation that GIPHY cannot provide a GIF from index[0], instead of having an unattractive 404, my combatants will get to use the default should one not be availible to me. 
 
 ## Change Log
- Use this section to document what changes were made and the reasoning behind those changes.  
+ - Orignally, my project was going to determine what Star Wars character you are, upon further reflections, it changed into a combat simualator, because that is way cooler. 
+ - I planned to include a more dynamic HP bar that visibly showed life depleting, it was scrapped for time.
+ - A tie fighter flying across the screen was scrapped for time.
+ - Loading animations were scrapped for time. 

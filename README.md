@@ -2,7 +2,7 @@
 
 ## Project Name
 
-Star Wars VS 
+Star Wars GIPHY Battle 
 
 ## Project Description
 

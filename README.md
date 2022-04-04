@@ -83,10 +83,6 @@ https://lucid.app/lucidchart/invitations/accept/inv_4b34903c-06a7-450f-8ffd-4965
 | Total |  | 40hrs| 36hrs |  
 
 
-## Code Snippet
-
-Use this section to include a brief code snippet of functionality that you are proud of and a brief description.  
-
 ```
 function reverse(string) {
 	// 

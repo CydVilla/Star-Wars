@@ -1,112 +1,178 @@
-* {
+/* Global Styles */
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: 'Nanum Gothic Coding', monospace;
+  background-color: #000;
+  color: #fff;
 }
 
+header {
+  text-align: center;
+  padding: 20px;
+  background-size: cover;
+  transition: background-image 1s ease-in-out;
+}
+
+header h1 {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #222;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+/* Main Layout */
+#battleArea {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Character Container Layout */
 #characterContainer {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-span {
-  display: block;
-  text-align: center;
+  justify-content: space-around;
+  align-items: flex-start;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-#duelBtnContainer {
+.character-column {
+  flex: 1 1 300px;
   display: flex;
-  justify-content: center;
-  /* background-image: url(https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-14.jpg); */
-  width: 100%;
-}
-
-#header {
-  background-image: url(https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-14.jpg);
-  height: 800px;
-}
-
-h1 {
-  font-family: Nanum Gothic Coding;
-  color: rgb(233, 233, 27);
-  padding: 3%;
-  font-weight: 100;
-  font-size: 69px;
-  text-align: center;
-}
-
-iframe {
-  width: 100%; 
-  height: 350px; 
-  margin: 0; 
-  padding: 0;
-}
-
-.wookie {
-  font-family: Nanum Gothic Coding;
-  color: rgb(233, 233, 27);
-  padding: 5%;
-  font-weight: 100;
-  font-size: 30px;
-  text-align: center;
-}
-
-.hitPoints {
-  font-family: Nanum Gothic Coding;
-  color: rgb(233, 233, 27);
-  padding: 0;
-  font-weight: 100;
-  font-size: 40px;
-  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 #versus {
-  font-family: Nanum Gothic Coding;
-  color: rgb(233, 233, 27);
-  padding: 10%;
-  font-weight: 100;
-  font-size: 40px;
+  font-size: 2em;
+  align-self: center;
+  padding: 0 20px;
 }
 
-#winningMessage {
-  font-family: Nanum Gothic Coding;
-  color: rgb(233, 233, 27);
-  font-weight: 100;
-  font-size: 30px;
+/* Character Block Styles */
+.character-container {
+  background-color: #111;
+  padding: 10px;
+  border-radius: 8px;
   text-align: center;
-  padding: 30px;
-  /* background-image: url(https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-14.jpg); */
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-out;
 }
 
-#duel {
-  font-family: Nanum Gothic Coding;
-  color: rgb(0, 15, 181);
-  font-weight: 50;
-  font-size: 30px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* iframe (GIF) styling */
+iframe {
+  border: none;
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+}
+
+/* Hit Points and Name Styles */
+.hitPoints {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 5px;
+  transition: transform 0.5s;
+}
+
+.wookie {
+  display: block;
+  font-size: 1.2em;
+  margin-top: 5px;
+}
+
+/* Health Bar Styles */
+.health-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #444;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.health-fill {
+  height: 100%;
+  background-color: #0f0;
+  width: 100%;
+  transition: width 0.3s ease-out;
+}
+
+/* Animations for Hit Points */
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(2px, -2px); }
+  50% { transform: translate(-2px, 2px); }
+  75% { transform: translate(2px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.hitPoints.attacked {
+  animation: shake 0.3s ease-in-out, pulse 0.3s ease-in-out;
+}
+
+/* Flash Animation for Character Container */
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.character-container.flash {
+  animation: flash 0.2s ease-in-out;
+}
+
+/* Damage Popup Animation */
+.damage-popup {
+  position: absolute;
+  color: #f00;
+  font-size: 1.2em;
+  font-weight: bold;
+  animation: popup 0.8s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes popup {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Victory Message Styling */
+#winningMessage p {
   text-align: center;
-  filter: drop-shadow(0 0 0.75rem crimson);
+  font-size: 2em;
+  margin-top: 20px;
 }
 
-@media only screen and 
-(min-width: 375px) and (max-width: 767px){
-      #characterContainer {
-        display: flex;
-        flex-direction: column;
-      }
-      #header {
-        height: 1500px;
-      }
-
-    }
-
-  #audio {
-  color: rgb(0, 15, 181);
-  font-weight: 50;
-  filter: drop-shadow(0 0 0.75rem crimson);
-  }
-  
-  #midi {
-    text-align: center;
-  }
+/* Hidden Class */
+.hidden {
+  display: none;
+}

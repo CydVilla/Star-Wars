@@ -295,6 +295,19 @@ async function startBattle() {
         </div>
       `;
 
+      // Add slide-in animation classes for mobile
+      if (window.innerWidth <= 700) {
+        if (index === 0) {
+          containerDiv.classList.add("slide-in-left");
+        } else {
+          containerDiv.classList.add("slide-in-right");
+        }
+        // Remove the class after animation so it can be re-triggered
+        containerDiv.addEventListener('animationend', () => {
+          containerDiv.classList.remove("slide-in-left", "slide-in-right");
+        }, { once: true });
+      }
+
       character.container = containerDiv;
       character.node = containerDiv.querySelector(".hitPoints");
       character.healthBar = containerDiv.querySelector(".health-fill");

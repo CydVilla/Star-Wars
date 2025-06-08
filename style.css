@@ -299,13 +299,19 @@ footer p {
 
 @media (max-width: 700px) {
   #characterContainer {
-    flex-direction: column;
+    flex-direction: row;
     align-items: stretch;
-    gap: 1.2rem;
+    gap: 0.7rem;
+  }
+  .character-column {
+    flex: 1 1 48%;
+    min-width: 0;
+    max-width: 50vw;
   }
   #versus {
-    margin: 1.2rem 0;
-    font-size: 2rem;
+    margin: 0 0.2rem;
+    font-size: 1.2rem;
+    align-self: center;
   }
   .controls {
     flex-direction: column;
@@ -325,7 +331,7 @@ footer p {
     font-size: 1.2rem;
   }
   .character-container {
-    margin-bottom: 1.2rem;
+    margin-bottom: 0;
   }
 }
 
@@ -372,4 +378,20 @@ body, html {
 /* Hidden Class */
 .hidden {
   display: none !important;
+}
+
+/* Slide-in Animations */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-80vw); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(80vw); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.character-container.slide-in-left {
+  animation: slideInLeft 0.7s cubic-bezier(0.4,0.2,0.2,1);
+}
+.character-container.slide-in-right {
+  animation: slideInRight 0.7s cubic-bezier(0.4,0.2,0.2,1);
 }

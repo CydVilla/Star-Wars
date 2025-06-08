@@ -34,6 +34,7 @@ let soundEnabled = true;
 let themeEnabled = true;
 let availableCharacters = [];
 let lastLaserTime = 0;
+let battleInProgress = false;
 
 // Theme management
 function toggleTheme() {
@@ -49,6 +50,15 @@ function toggleSound() {
   soundEnabled = !soundEnabled;
   soundToggle.querySelector(".sound-icon").textContent = soundEnabled ? "🔊" : "🔇";
   localStorage.setItem("soundEnabled", soundEnabled);
+  if (!soundEnabled) {
+    themeMusic.pause();
+    laserSound.pause();
+  } else {
+    // Only play theme music if a battle is active (i.e., character containers are not empty)
+    if (character1.children.length > 0 && character2.children.length > 0) {
+      themeMusic.play().catch(() => {});
+    }
+  }
 }
 
 function playSound(sound) {
@@ -247,6 +257,11 @@ const getCharacter2 = async () => {
 };
 
 async function startBattle() {
+  if (battleInProgress) return;
+  battleInProgress = true;
+  duel.disabled = true;
+  replayButton.disabled = true;
+
   replayContainer.classList.add("hidden");
   winningMessage.innerHTML = "";
   character1.innerHTML = "";
@@ -297,6 +312,10 @@ async function startBattle() {
     console.error("Error starting battle:", error);
     loadingSpinner.classList.add("hidden");
   }
+
+  duel.disabled = false;
+  replayButton.disabled = false;
+  battleInProgress = false;
 }
 
 function init() {

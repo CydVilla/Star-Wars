@@ -1,4 +1,4 @@
-const DOMAIN = "https://swapi.dev/api/people/";
+const DOMAIN = "https://swapi.tech/api/people/";
 const GIPHY =
   "https://api.giphy.com/v1/gifs/search?api_key=y7u0OVy2BP4j7Mz5Fbbs8PnHej5XE3aH&q=";
 
@@ -10,9 +10,90 @@ const winningMessage = document.querySelector("#winningMessage");
 const header = document.querySelector("#header");
 const replayContainer = document.querySelector("#replayContainer");
 const replayButton = document.querySelector("#replay");
+const themeToggle = document.querySelector("#themeToggle");
+const soundToggle = document.querySelector("#soundToggle");
+const player1Select = document.querySelector("#player1Select");
+const player2Select = document.querySelector("#player2Select");
+const loadingSpinner = document.querySelector(".loading-spinner");
+const player1Score = document.querySelector(".player1-score");
+const player2Score = document.querySelector(".player2-score");
+const randomizeBtn = document.getElementById("randomize");
+
+// Audio elements
+const laserSound = new Audio("laser.mp3");
+laserSound.volume = 0.15; // Lower volume
+const themeMusic = new Audio("Star Wars Main Theme Remake (MIDI).mp3");
+themeMusic.loop = true;
 
 // Battle arena background images
 const battleArena = ["Death-Star.jpeg", "mustafar.png", "tatooine.jpeg"];
+
+// Game state
+let scores = { player1: 0, player2: 0 };
+let soundEnabled = true;
+let themeEnabled = true;
+let availableCharacters = [];
+let lastLaserTime = 0;
+
+// Theme management
+function toggleTheme() {
+  const currentTheme = document.body.getAttribute("data-theme") || "dark";
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  document.body.setAttribute("data-theme", newTheme);
+  themeToggle.querySelector(".theme-icon").textContent = newTheme === "dark" ? "🌙" : "☀️";
+  localStorage.setItem("theme", newTheme);
+}
+
+// Sound management
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  soundToggle.querySelector(".sound-icon").textContent = soundEnabled ? "🔊" : "🔇";
+  localStorage.setItem("soundEnabled", soundEnabled);
+}
+
+function playSound(sound) {
+  if (soundEnabled) {
+    // Add cooldown for laser sound
+    if (sound === laserSound) {
+      const now = Date.now();
+      if (now - lastLaserTime < 500) return;
+      lastLaserTime = now;
+    }
+    sound.currentTime = 0;
+    sound.play().catch(error => console.log("Audio playback failed:", error));
+  }
+}
+
+// Character selection
+async function loadCharacters() {
+  try {
+    loadingSpinner.classList.remove("hidden");
+    const response = await axios.get(`${DOMAIN}`);
+    const totalPages = Math.ceil(response.data.count / 10);
+    const characters = [];
+
+    for (let page = 1; page <= totalPages; page++) {
+      const pageResponse = await axios.get(`${DOMAIN}?page=${page}`);
+      characters.push(...pageResponse.data.results);
+    }
+
+    availableCharacters = characters;
+    populateCharacterSelects();
+    loadingSpinner.classList.add("hidden");
+  } catch (error) {
+    console.error("Error loading characters:", error);
+    loadingSpinner.classList.add("hidden");
+  }
+}
+
+function populateCharacterSelects() {
+  const options = availableCharacters.map(char => 
+    `<option value="${char.url}">${char.name}</option>`
+  ).join("");
+
+  player1Select.innerHTML = "<option value=''>Select Character</option>" + options;
+  player2Select.innerHTML = "<option value=''>Select Character</option>" + options;
+}
 
 /**
  * Updates the hit points and health bar of a character, and triggers animations.
@@ -77,6 +158,7 @@ const battle = async (char1, char2) => {
     char2.hp -= attack1;
     updateHitPoints(char2);
     showDamage(char2, attack1);
+    playSound(laserSound);
     exchanges++;
     if (char2.hp <= 0) break;
     
@@ -86,6 +168,7 @@ const battle = async (char1, char2) => {
     char1.hp -= attack2;
     updateHitPoints(char1);
     showDamage(char1, attack2);
+    playSound(laserSound);
     exchanges++;
   }
 
@@ -94,8 +177,12 @@ const battle = async (char1, char2) => {
   if (char1.hp <= 0 && char2.hp <= 0) {
     victory.innerHTML = `It's a draw! (${exchanges} exchanges)`;
   } else if (char1.hp <= 0) {
+    scores.player2++;
+    player2Score.textContent = scores.player2;
     victory.innerHTML = `${char2.name} defeated ${char1.name} in ${exchanges} exchanges!`;
   } else {
+    scores.player1++;
+    player1Score.textContent = scores.player1;
     victory.innerHTML = `${char1.name} defeated ${char2.name} in ${exchanges} exchanges!`;
   }
   winningMessage.appendChild(victory);
@@ -141,8 +228,9 @@ const attributes = (name, data) => {
 
 const getCharacter = async () => {
   try {
-    const response = await axios.get(`${DOMAIN + randomCharNumber()}`);
-    return gif(response.data.name).then(({ name, data }) => attributes(name, data));
+    const response = await axios.get(`${DOMAIN}${randomCharNumber()}`);
+    const name = response.data.result.properties.name;
+    return gif(name).then(({ name, data }) => attributes(name, data));
   } catch (error) {
     console.error(error);
   }
@@ -150,75 +238,84 @@ const getCharacter = async () => {
 
 const getCharacter2 = async () => {
   try {
-    const response = await axios.get(`${DOMAIN + randomCharNumber()}`);
-    return gif(response.data.name).then(({ name, data }) => attributes(name, data));
+    const response = await axios.get(`${DOMAIN}${randomCharNumber()}`);
+    const name = response.data.result.properties.name;
+    return gif(name).then(({ name, data }) => attributes(name, data));
   } catch (error) {
     console.error(error);
   }
 };
 
-function startBattle() {
-  // Hide replay button and clear previous messages
+async function startBattle() {
   replayContainer.classList.add("hidden");
   winningMessage.innerHTML = "";
   character1.innerHTML = "";
   character2.innerHTML = "";
   
-  // Set a random background image for header
   const arenaImg = battleArena[Math.floor(Math.random() * battleArena.length)];
   header.style.backgroundImage = `url(images/${arenaImg})`;
   
-  // Fetch two random characters
-  Promise.all([getCharacter(), getCharacter2()])
-    .then((characters) => {
-      characters.forEach((character, index) => {
-        const characterImage = character.images?.[0]?.embed_url || "images/Default.png";
-        const gifElement = document.createElement("iframe");
-        gifElement.src = characterImage;
-        gifElement.setAttribute("allowFullScreen", "");
+  if (themeEnabled) {
+    playSound(themeMusic);
+  }
 
-        const hitPoints = document.createElement("span");
-        hitPoints.classList.add("hitPoints");
-        hitPoints.innerHTML = character.hp;
+  try {
+    loadingSpinner.classList.remove("hidden");
+    const [char1, char2] = await Promise.all([
+      getCharacter(),
+      getCharacter2()
+    ]);
 
-        const nameDiv = document.createElement("div");
-        nameDiv.classList.add("wookie");
-        nameDiv.innerHTML = character.name;
+    [char1, char2].forEach((character, index) => {
+      const characterImage = character.images?.[0]?.embed_url || "images/Default.png";
+      const containerDiv = document.createElement("div");
+      containerDiv.classList.add("character-container");
+      
+      containerDiv.innerHTML = `
+        <iframe src="${characterImage}" allowFullScreen></iframe>
+        <span class="hitPoints">${character.hp}</span>
+        <div class="wookie">${character.name}</div>
+        <div class="health-bar">
+          <div class="health-fill" style="width: 100%"></div>
+        </div>
+      `;
 
-        // Create health bar elements
-        const healthBarContainer = document.createElement("div");
-        healthBarContainer.classList.add("health-bar");
-        const healthFill = document.createElement("div");
-        healthFill.classList.add("health-fill");
-        healthFill.style.width = "100%";
-        healthBarContainer.appendChild(healthFill);
+      character.container = containerDiv;
+      character.node = containerDiv.querySelector(".hitPoints");
+      character.healthBar = containerDiv.querySelector(".health-fill");
 
-        // Create container for the character block
-        const containerDiv = document.createElement("div");
-        containerDiv.classList.add("character-container");
-        containerDiv.appendChild(gifElement);
-        containerDiv.appendChild(hitPoints);
-        containerDiv.appendChild(nameDiv);
-        containerDiv.appendChild(healthBarContainer);
-
-        // Save container and element references for later updates
-        character.container = containerDiv;
-        character.node = hitPoints;
-        character.healthBar = healthFill;
-
-        if (index === 0) {
-          character1.appendChild(containerDiv);
-        } else {
-          character2.appendChild(containerDiv);
-        }
-      });
-      return characters;
-    })
-    .then((characters) => {
-      battle(characters[0], characters[1]);
+      if (index === 0) {
+        character1.appendChild(containerDiv);
+      } else {
+        character2.appendChild(containerDiv);
+      }
     });
+
+    loadingSpinner.classList.add("hidden");
+    await battle(char1, char2);
+  } catch (error) {
+    console.error("Error starting battle:", error);
+    loadingSpinner.classList.add("hidden");
+  }
 }
 
-// Attach event listeners to start/replay battle
-duel.addEventListener("click", startBattle);
-replayButton.addEventListener("click", startBattle);
+function init() {
+  // Load saved preferences
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  const savedSound = localStorage.getItem("soundEnabled");
+  
+  document.body.setAttribute("data-theme", savedTheme);
+  themeToggle.querySelector(".theme-icon").textContent = savedTheme === "dark" ? "🌙" : "☀️";
+  
+  if (savedSound !== null) {
+    soundEnabled = savedSound === "true";
+    soundToggle.querySelector(".sound-icon").textContent = soundEnabled ? "🔊" : "🔇";
+  }
+
+  duel.addEventListener("click", startBattle);
+  replayButton.addEventListener("click", startBattle);
+  themeToggle.addEventListener("click", toggleTheme);
+  soundToggle.addEventListener("click", toggleSound);
+}
+
+init();

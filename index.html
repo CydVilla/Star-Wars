@@ -4,21 +4,34 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Star Wars GIPHY Battle - An epic battle simulator featuring Star Wars characters" />
   <link rel="stylesheet" href="style.css" />
   <!-- Axios for API calls -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script defer src="app.js" type="module"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
   <title>Star Wars GIPHY Battle</title>
 </head>
 <body>
   <header id="header">
     <h1>Star Wars GIPHY Battle</h1>
-    <!-- Duel button to start the battle simulation -->
-    <button id="duel">Duel</button>
+    <div class="controls">
+      <button id="duel" aria-label="Start battle">Duel</button>
+      <button id="themeToggle" aria-label="Toggle dark/light theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <button id="soundToggle" aria-label="Toggle sound effects">
+        <span class="sound-icon">🔊</span>
+      </button>
+    </div>
   </header>
   
   <main id="battleArea">
+    <div class="score-board">
+      <div class="score player1-score">0</div>
+      <div class="score player2-score">0</div>
+    </div>
+
     <section id="characterContainer">
       <div id="character1" class="character-column"></div>
       <div id="versus">
@@ -26,11 +39,18 @@
       </div>
       <div id="character2" class="character-column"></div>
     </section>
-    <section id="winningMessage"></section>
-    <!-- Replay button, shown after battle ends -->
+
+    <div class="loading-spinner hidden" aria-hidden="true"></div>
+    
+    <section id="winningMessage" aria-live="polite"></section>
+    
     <section id="replayContainer" class="hidden">
-      <button id="replay">Replay Battle</button>
+      <button id="replay" aria-label="Replay battle">Replay Battle</button>
     </section>
   </main>
+
+  <footer>
+    <p>Created with ❤️ | Star Wars GIPHY Battle</p>
+  </footer>
 </body>
 </html>

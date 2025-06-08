@@ -1,134 +1,46 @@
-# Project Overview
+# Star Wars GIPHY Battle
 
-## Project Name
+A fun, mobile-optimized browser game where two random Star Wars characters duel with GIPHY-powered visuals and sound effects!
 
-Star Wars GIPHY Battle 
+## Features
+- **Random Star Wars duels** using [SWAPI.tech](https://swapi.tech/documentation) for character data
+- **GIPHY integration** for animated character GIFs
+- **Cinematic backgrounds** with dark overlays and blur
+- **Sound effects and music** with a mute toggle (remembers position)
+- **Mobile-first responsive design**
+- **Single-duel enforcement** (no overlapping battles)
+- **Score tracking** and replay
+- **Dark/light theme toggle**
 
-## Project Description
+## How to Run Locally
+1. **Clone or download this repo**
+2. **Start a local server** (required for JS modules and API calls):
+   - With Python 3:
+     ```sh
+     python3 -m http.server 8000
+     ```
+   - Or with Node.js:
+     ```sh
+     npx http-server .
+     ```
+3. **Open your browser to** [http://localhost:8000](http://localhost:8000)
 
-This project will pit two Star Wars characters against each other in an epic battle. 
+## Controls
+- **Duel**: Start a new random battle
+- **Replay Battle**: Rematch with new random characters
+- **Theme Toggle**: Switch between dark and light mode
+- **Sound Toggle**: Mute/unmute all sounds (music resumes from where it left off)
 
-## API and Data Sample
+## Troubleshooting
+- If you see network errors for character data, SWAPI.tech may be down or rate-limited. Try again later or check their [status/docs](https://swapi.tech/documentation).
+- If you see CORS or JS errors, make sure you are running a local server (not opening index.html directly).
+- For best results, use a modern browser (Chrome, Firefox, Safari, Edge).
 
-I will be utilizing the Star Wars API "SWAPI."
+## Credits
+- [SWAPI.tech](https://swapi.tech/documentation) for Star Wars data
+- [GIPHY API](https://developers.giphy.com/) for GIFs
+- Star Wars theme and laser sound: for demo/educational use only
 
-```
-"count": 1,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "name": "Leia Organa",
-            "height": "150",
-            "mass": "49",
-            "hair_color": "brown",
-            "skin_color": "light",
-            "eye_color": "brown",
-            "birth_year": "19BBY",
-            "gender": "female",
-	    
- ```
+---
 
-
-## Wireframes
-
-https://wireframe.cc/pro/pp/ed9e19e5f433452
-
-### MVP/PostMVP
-
-The functionality will then be divided into two separate lists: MPV and PostMVP.  
-
-#### MVP 
-
-- Find an API with ample data
-- Create a button that extract's data from the API randomly
-- Add a site background image related to Star Wars
-- Use Star Wars esque font
-- Use axios to make an API call
-- Utilize flexbox 
-
-#### PostMVP  
-- Add music
-- Add gifs and other animations to the site
-- Add random background images
-
-## Project Schedule
-
-|  Day | Deliverable | Status
-|---|---| ---|
-|April 16-18| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
-|April 19| Project Approval | Complete
-|April 20| Core Application Structure (HTML, CSS, etc.) | Complete
-|April 20| Pseudocode / actual code | Complete
-|April 21| Initial Clickable Model  | Complete
-|April 22| MVP | Complete
-|April 23| Presentations | Complete
-
-## Priority Matrix
-
-https://lucid.app/lucidchart/invitations/accept/inv_4b34903c-06a7-450f-8ffd-4965c415f915?viewport_loc=-90%2C-7%2C1579%2C753%2C0_0
-
-## Timeframes
-
-| Component | Priority | Estimated Time | Time Invested ||
-| --- | :---: |  :---: | :---: | :---: |
-| Adding body content | H | 5hrs| 3hrs |  |
-| Applying background images | H | 3hrs| 2hrs |  |
-| Working with API | H | 5hrs| 5hrs |  |
-| Formatting the site | H | 6hrs| 4hrs |  |
-| Applying user feedback content | H | 2hrs| 1hrs |  |
-| Incoorperating flexbox | H | 3hrs| 2hrs ||
-| Heavy CSS/JS styling | L | 6hrs| 8hrs |  |
-| Adding Gif content | L | 10hrs| 11hrs |  |
-| Total |  | 40hrs| 36hrs |  
-
-
-```
-function reverse(string) {
-	// 
-}
-``` Promise.all([getCharacter(), getCharacter2()])
-    .then((values) => {
-      values.forEach((character, index) => {
-        let characterImage = character.images[0].embed_url?character.images[0].embed_url:'images/Default.png'
-        if (index == "0") {
-          let name = document.createElement("div");
-          let gif = document.createElement('iframe')
-          gif.src = characterImage
-          character1.appendChild(gif)
-          name.classList.add('wookie')
-          let hitPoints = document.createElement("span");
-          hitPoints.classList.add('hitPoints')
-          hitPoints.innerHTML = character.hp;
-          character1.appendChild(hitPoints);
-          name.innerHTML = character.name;
-          character1.appendChild(name);
-          character.node = hitPoints
-        } else {
-          let name = document.createElement("div");
-          let gif = document.createElement('iframe')
-          gif.src = characterImage
-          character2.appendChild(gif)
-          name.classList.add('wookie')
-          let hitPoints = document.createElement("span");
-          hitPoints.classList.add('hitPoints')
-          hitPoints.innerHTML = character.hp;
-          character2.appendChild(hitPoints);
-          name.innerHTML = character.name;
-          character2.appendChild(name);
-          character.node = hitPoints
-        }
-      });
-      return values;
-    })
-    .then((characters) => {
-      winner(characters[0], characters[1]);
-    });
-
-    This code is essentially saying to use my "Default.PNG" in a situtation that GIPHY cannot provide a GIF from index[0], instead of having an unattractive 404, my combatants will get to use the default should one not be availible to me. 
-
-## Change Log
- - Orignally, my project was going to determine what Star Wars character you are, upon further reflections, it changed into a combat simualator, because that is way cooler. 
- - I planned to include a more dynamic HP bar that visibly showed life depleting, it was scrapped for time.
- - A tie fighter flying across the screen was scrapped for time.
- - Loading animations were scrapped for time. 
+Created with ❤️ for Star Wars fans!
